@@ -6,7 +6,7 @@ const OptionStatus = props => {
 	return (
 		<div className="option-status">
 			<ul>
-				<li>Summary work time: <span>1:25</span></li>
+				<li>Summary work time: <span>{props.work_sum}</span></li>
 				<li>Rounds: <span>{props.rounds}</span></li>
 				<li>Cycles: <span>{props.cycles}</span></li>
 			</ul>

@@ -6,7 +6,6 @@ import TimerTable from '../TimerTable/Index'
 
 import './App.sass'
 
-
 function App() {
 	return (
 		<div className="main">
