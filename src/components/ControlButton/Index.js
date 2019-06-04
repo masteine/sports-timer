@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { InputMask } from 'primereact/inputmask'
 import './Index.sass'
 
-function ControlButton({ props }) {
-	const label = props.name
-	const valueType = props.time
+function ControlButton({ i  }) {
+	const label = i.name
+	const valueType = i.time
+	
 	
 	const [value, setValue] = useState(0);
 

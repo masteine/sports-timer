@@ -1,14 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import ControlButton from '../ControlButton/Index'
 import OptionStatus from '../OptionStatus/Index'
 import './Index.sass'
 
-function ControlBar() {
+
+function ControlBar(props) {
+	
+	let state = props.state
+	
 	return (
 		<div className="control-bar">
 			<OptionStatus/>
 			{optionBtnArray.map(i =>
-				<ControlButton key={i.name.toLowerCase().split(' ').join('')} props={i}/>
+				<ControlButton key={i.name.toLowerCase().split(' ').join('_')}
+				               i={i}  />
 			)}
 		</div>
 	);
@@ -47,5 +54,8 @@ const optionBtnArray = [
 	}
 ]
 
-export default ControlBar
+const mapState = state => ({
+	state: state.initState
+});
 
+export default connect(mapState)(ControlBar);
