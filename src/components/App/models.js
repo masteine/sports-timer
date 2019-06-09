@@ -1,4 +1,4 @@
-import { init } from "@rematch/core";
+import { init } from '@rematch/core'
 
 const initState = {
 	state: {
@@ -7,12 +7,11 @@ const initState = {
 		prepare: '00:10',
 		rest: '00:10',
 		rest_between_cycles: '00:59',
-		cycles: '1',
-		rounds: '1',
-	},
-	
+		cycles: '8',
+		rounds: '1'
+	}
 }
 
 export const store = init({
-	models: { initState },
-});
+	models: { initState }
+})
