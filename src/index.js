@@ -1,17 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import { Provider } from "react-redux";
-import { store } from "./components/App/models";
+import { Provider } from 'react-redux'
+import { init } from '@rematch/core'
 
-import App from './components/App/App';
+import App from './components/App/App'
 
-import './index.css';
+import initState from './components/ControlButton/models'
+
+import './index.css'
+
+const store = init({
+	models: {
+		initState
+	}
+})
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App/>
-	</Provider>
-	, document.getElementById('root'));
-
-
+		<App />
+	</Provider>,
+	document.getElementById('root')
+)

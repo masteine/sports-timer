@@ -1,42 +1,74 @@
-import React, { useState } from 'react'
-import { InputMask } from 'primereact/inputmask'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+//import { InputMask } from 'primereact/inputmask'
+
 import './Index.sass'
 
-function ControlButton({ item, itemValue }) {
-	const label = item.name
-	const valueType = item.time
-	const itemName = item.name
-		.toLowerCase()
-		.split(' ')
-		.join('_')
+class ControlButton extends Component {
+	//
+	// function addCount(e, valName) {
+	// 	console.log(valName)
+	// 	if (e.target.id === 'down') {
+	// 		setValue(value - 1)
+	// 	} else {
+	// 		setValue(value + 1)
+	// 	}
+	// }
 
-	let val
+	render() {
+		console.log(this.props)
 
-	for (let i in itemValue) {
-		if (i === itemName) {
-			val = itemValue[i]
-			if (valueType) {
-				val = val.slice(2, '')
+		const label = this.props.item.name
+		const valueType = this.props.item.time
+		const itemValue = this.props.store
+		const itemName = this.props.item.name
+			.toLowerCase()
+			.split(' ')
+			.join('_')
+
+		const { addCountAction } = this.props
+		let val
+		// convert value from string to  number
+		for (let i in itemValue) {
+			if (i === itemName) {
+				val = itemValue[i]
+				// for time with ":"
+				if (valueType) {
+					val = val.split(':').join('')
+				}
+				// for int
+				if (i !== valueType) {
+					val = Number(val)
+				}
 			}
 		}
+
+		return (
+			<div className="control-button">
+				<label>{label}: </label>
+				<button id="down" onClick={addCountAction}>
+					{' '}
+					-{' '}
+				</button>
+				<label className="btn-s">{val}</label>
+				<button id="up" onClick={addCountAction}>
+					{' '}
+					+{' '}
+				</button>
+			</div>
+		)
 	}
-
-	console.log(val)
-	const [value, setValue] = useState(0)
-
-	return (
-		<div className="control-button">
-			<label>{label}: </label>
-			<button onClick={() => setValue(value - 1)}> - </button>
-			{/* <InputMask
-				className="btn-s"
-				mask={valueType ? '00:00' : '0'}
-				value={value}
-				onChange={e => setValue({ value: e.value })}
-			/> */}
-			<button onClick={() => setValue(value + 1)}> + </button>
-		</div>
-	)
 }
 
-export default ControlButton
+const mapState = state => ({
+	store: state.initState
+})
+
+const mapDispatch = ({ initState: addCount }) => ({
+	addCountAction: () => addCount()
+})
+
+export default connect(
+	mapState,
+	mapDispatch
+)(ControlButton)
