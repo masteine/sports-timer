@@ -5,19 +5,9 @@ import { connect } from 'react-redux'
 import './Index.sass'
 
 class ControlButton extends Component {
-	//
-	// function addCount(e, valName) {
-	// 	console.log(valName)
-	// 	if (e.target.id === 'down') {
-	// 		setValue(value - 1)
-	// 	} else {
-	// 		setValue(value + 1)
-	// 	}
-	// }
-
+	
+	
 	render() {
-		console.log(this.props)
-
 		const label = this.props.item.name
 		const valueType = this.props.item.time
 		const itemValue = this.props.store
@@ -25,9 +15,11 @@ class ControlButton extends Component {
 			.toLowerCase()
 			.split(' ')
 			.join('_')
-
-		const { addCountAction } = this.props
+		
+		const { changeValueAction } = this.props
+		
 		let val
+		let countStepDefault = 1
 		// convert value from string to  number
 		for (let i in itemValue) {
 			if (i === itemName) {
@@ -42,19 +34,31 @@ class ControlButton extends Component {
 				}
 			}
 		}
-
+		
 		return (
 			<div className="control-button">
 				<label>{label}: </label>
-				<button id="down" onClick={addCountAction}>
-					{' '}
-					-{' '}
-				</button>
-				<label className="btn-s">{val}</label>
-				<button id="up" onClick={addCountAction}>
-					{' '}
-					+{' '}
-				</button>
+				<>
+					<button id="down"
+					        onClick={(e) => changeValueAction({
+						        countStepDefault,
+						        itemName,
+						        e
+					        })}>
+						{' '}
+						-{' '}
+					</button>
+					<label className="btn-s">{val}</label>
+					<button id="up"
+					        onClick={(e) => changeValueAction({
+						        countStepDefault,
+						        itemName,
+						        e
+					        })}>
+						{' '}
+						+{' '}
+					</button>
+				</>
 			</div>
 		)
 	}
@@ -64,8 +68,12 @@ const mapState = state => ({
 	store: state.initState
 })
 
-const mapDispatch = ({ initState: addCount }) => ({
-	addCountAction: () => addCount()
+const mapDispatch = ({ initState: { changeValue } }) => ({
+	changeValueAction: ({ countStepDefault, itemName, e }) => changeValue({
+		countStepDefault,
+		itemName,
+		e
+	})
 })
 
 export default connect(
