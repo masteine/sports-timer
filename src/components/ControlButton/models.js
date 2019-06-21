@@ -31,6 +31,9 @@ export default {
 							stringViewValue = `00:0${stringValue}`
 						}
 						if (stringValue.length === 2) {
+							if (Number(stringValue) > 59) {
+								console.log('more')
+							}
 							stringViewValue = `00:${stringValue}`
 						}
 						if (stringValue.length === 3) {
