@@ -7,7 +7,8 @@ export default {
 		rest: '00:10',
 		rest_between_cycles: '01:00',
 		cycles: '8',
-		rounds: '1'
+		rounds: '1',
+		timerStatus: 'pause'
 	},
 	reducers: {
 		changeValue(state, payload) {

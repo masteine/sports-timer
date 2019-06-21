@@ -1,19 +1,61 @@
 .timer-table
-	text-align: center
-	font-size: 3rem
-	display: flex
-	flex-wrap: wrap
-	flex: 4
-	p
-		margin: 1rem 0
-	h2
-		margin: 1rem 0
-		text-decoration: underline
-	h4
-		margin: 1rem 0
-		text-decoration: underline
-	.work-time
-		width: 100%
-	.work-cycles,
-	.work-rounds
-		width: 50%
+  text-align: center
+  font-size: 3rem
+  display: flex
+  flex-wrap: wrap
+  flex: 4
+  position: relative
+
+  p
+    margin: 1rem 0
+
+  h2
+    margin: 1rem 0
+    text-decoration: underline
+
+  h4
+    margin: 1rem 0
+    text-decoration: underline
+
+  .work-time
+    width: 100%
+
+  .work-cycles,
+  .work-rounds
+    width: 50%
+
+  .btn-start-timer
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    max-height: 125px
+    max-width: 125px
+    width: 100%
+    height: 100%
+    border-radius: 50%
+    border: 2px solid grey
+    box-shadow: 1px 1px 14px 1px darkgrey
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    outline: none
+    cursor: pointer
+    background: transparent
+    transition: 0.4s all
+    &.pause
+      figure
+        position: absolute
+        left: 0
+        width: 0
+        height: 0
+        border-style: solid
+        border-width: 35px 0 35px 60px
+        border-color: transparent transparent transparent grey
+        transition: 0.4s all
+      &:hover
+        box-shadow: 1px 1px 21px 1px grey
+        border: 2px solid lightgrey
+        background-color: rgba(222, 222, 222, 0.33)
+        figure
+          border-color: transparent transparent transparent lightgrey
