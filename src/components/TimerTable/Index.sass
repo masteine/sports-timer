@@ -59,3 +59,27 @@
         background-color: rgba(222, 222, 222, 0.33)
         figure
           border-color: transparent transparent transparent lightgrey
+
+    &.start
+      figure
+        position: absolute
+        height: 100%
+        display: flex
+        align-items: center
+        &:after,
+        &:before
+          position: absolute
+          content: ''
+          height: 50px
+          width: 7px
+          background: lightgrey
+          border-radius: 2px
+          transition: 0.4s all
+        &:before
+          left: 10px
+        &:after
+          right: 10px
+      &:hover
+        box-shadow: 1px 1px 21px 1px grey
+        border: 2px solid lightgrey
+        background-color: rgba(222, 222, 222, 0.33)
