@@ -21,9 +21,9 @@ const OptionStatus = props => {
 }
 
 const mapState = state => ({
-	rounds: state.initState.rounds,
-	cycles: state.initState.cycles,
-	work_sum: state.initState.work_sum
+	rounds: state.timerOption.rounds,
+	cycles: state.timerOption.cycles,
+	work_sum: state.timerOption.work_sum
 })
 
 export default connect(mapState)(OptionStatus)

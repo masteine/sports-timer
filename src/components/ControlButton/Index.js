@@ -6,7 +6,6 @@ import './Index.sass'
 
 class ControlButton extends Component {
 	
-	
 	render() {
 		const label = this.props.item.name
 		const valueType = this.props.item.time
@@ -65,10 +64,10 @@ class ControlButton extends Component {
 }
 
 const mapState = state => ({
-	store: state.initState
+	store: state.timerOption
 })
 
-const mapDispatch = ({ initState: { changeValue } }) => ({
+const mapDispatch = ({ timerOption: { changeValue } }) => ({
 	changeValueAction: ({ countStepDefault, itemName, e }) => changeValue({
 		countStepDefault,
 		itemName,

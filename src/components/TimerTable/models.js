@@ -1,11 +1,12 @@
 // count model
 export default {
 	state: {
-		timerStatus: 'pause'
+		timerState: 'pause'
 	},
 	reducers: {
 		timerStatus(state, payload) {
-			console.log('1')
+			console.log(payload, '1')
+			return state = { ...state }
 		},
 	},
 }
