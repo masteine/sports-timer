@@ -10,10 +10,10 @@ const OptionStatus = props => {
 					Summary work time: <span>{props.work_sum}</span>
 				</li>
 				<li>
-					Rounds: <span>{props.rounds}</span>
+					Cycles: <span>{props.cycles}</span>
 				</li>
 				<li>
-					Cycles: <span>{props.cycles}</span>
+					Rounds: <span>{props.rounds}</span>
 				</li>
 			</ul>
 		</div>
@@ -23,7 +23,7 @@ const OptionStatus = props => {
 const mapState = state => ({
 	rounds: state.timerOption.rounds,
 	cycles: state.timerOption.cycles,
-	work_sum: state.timerOption.work_sum
+	work_sum: state.timerOption.work_sum,
 })
 
 export default connect(mapState)(OptionStatus)

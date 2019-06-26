@@ -1,58 +1,59 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-//import { InputMask } from 'primereact/inputmask'
-
+import timeConverter from '../../utilities/timeConverter'
 import './Index.sass'
 
 class ControlButton extends Component {
-	
+
 	render() {
 		const label = this.props.item.name
 		const valueType = this.props.item.time
 		const itemValue = this.props.store
 		const itemName = this.props.item.name
-			.toLowerCase()
-			.split(' ')
-			.join('_')
-		
+		.toLowerCase()
+		.split(' ')
+		.join('_')
+
 		const { changeValueAction } = this.props
-		
+
 		let val
 		let countStepDefault = 1
 		// convert value from string to  number
-		for (let i in itemValue) {
-			if (i === itemName) {
+		for ( let i in itemValue ) {
+			if ( i === itemName ) {
 				val = itemValue[i]
 				// for time with ":"
-				if (valueType) {
+				if ( valueType ) {
 					val = val.split(':').join('')
 				}
 				// for int
-				if (i !== valueType) {
+				if ( i !== valueType ) {
 					val = Number(val)
 				}
 			}
 		}
-		
+
 		return (
 			<div className="control-button">
 				<label>{label}: </label>
+
 				<>
 					<button id="down"
 					        onClick={(e) => changeValueAction({
 						        countStepDefault,
 						        itemName,
-						        e
+						        e,
 					        })}>
 						{' '}
 						-{' '}
 					</button>
-					<label className="btn-s">{val}</label>
+					<label className="btn-s">{valueType ? timeConverter(
+						val) : val}</label>
 					<button id="up"
 					        onClick={(e) => changeValueAction({
 						        countStepDefault,
 						        itemName,
-						        e
+						        e,
 					        })}>
 						{' '}
 						+{' '}
@@ -64,18 +65,18 @@ class ControlButton extends Component {
 }
 
 const mapState = state => ({
-	store: state.timerOption
+	store: state.timerOption,
 })
 
 const mapDispatch = ({ timerOption: { changeValue } }) => ({
 	changeValueAction: ({ countStepDefault, itemName, e }) => changeValue({
 		countStepDefault,
 		itemName,
-		e
-	})
+		e,
+	}),
 })
 
 export default connect(
 	mapState,
-	mapDispatch
+	mapDispatch,
 )(ControlButton)

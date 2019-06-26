@@ -9,8 +9,9 @@ export const store = init({
 		timerState
 	},
 })
-/*
+
 store.subscribe(() => {
 	console.log(store.getState())
 })
-*/
+
+

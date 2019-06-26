@@ -7,7 +7,8 @@ export default {
 		timerStatus(state) {
 			if ( !state.timerState ) {
 				return state = { ...state, timerState: true }
-			} else {
+			}
+			else {
 				return state = { ...state, timerState: false }
 			}
 		},

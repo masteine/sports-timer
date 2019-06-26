@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { optionBtnArray } from './optionButton'
 import ControlButton from '../ControlButton/Index'
@@ -6,16 +7,18 @@ import OptionStatus from '../OptionStatus/Index'
 
 import './Index.sass'
 
-function ControlBar() {
+
+function ControlBar(props) {
+	const timerState = props.timerState
 	return (
-		<div className="control-bar">
-			<OptionStatus />
+		<div className={timerState ? 'control-bar disable' : 'control-bar '}>
+			<OptionStatus/>
 			{optionBtnArray.map(item => (
 				<ControlButton
 					key={item.name
-						.toLowerCase()
-						.split(' ')
-						.join('_')}
+					.toLowerCase()
+					.split(' ')
+					.join('_')}
 					item={item}
 				/>
 			))}
@@ -23,4 +26,10 @@ function ControlBar() {
 	)
 }
 
-export default ControlBar
+const mapState = state => ({
+	timerState: state.timerState.timerState,
+})
+
+export default connect(
+	mapState,
+)(ControlBar)
