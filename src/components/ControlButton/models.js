@@ -4,7 +4,7 @@ import timeConverter from '../../utilities/timeConverter'
 export default {
 	state: {
 		work_time: '00:20',
-		work_sum: '02:40',
+		work_sum: '03:50',
 		prepare: '00:10',
 		rest: '00:10',
 		rest_between_cycles: '00:30',
@@ -15,12 +15,11 @@ export default {
 		changeValue(state, payload) {
 
 			function reCountStateValue() {
-				let workSummary, workTime;
+				let workSummary, workTime, rest;
 				workTime = Number(state.work_time.split(':').join(''))
-				workSummary = state.rounds * state.cycles
-				workSummary = timeConverter(workTime * workSummary)
-
-				state.work_sum = workSummary
+				rest = Number(state.rest.split(':').join(''))
+				workSummary = (workTime * state.rounds * state.cycles) + (rest * (state.rounds * state.cycles - 1))
+				state.work_sum = timeConverter(workSummary)
 			}
 
 			for ( let i in state ) {

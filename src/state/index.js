@@ -11,7 +11,7 @@ export const store = init({
 })
 
 store.subscribe(() => {
-	console.log(store.getState())
+	//console.log(store.getState())
 })
 
 
