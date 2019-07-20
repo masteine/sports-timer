@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import Header from '../Header/Index'
-import ControlBar from '../ControlBar/Index'
-import TimerTable from '../TimerTable/Index'
+import Header from '../Header/Index';
+import ControlBar from '../ControlBar/Index';
+import TimerTable from '../TimerTable/Index';
 
-import './App.sass'
+import './App.sass';
 
 function App() {
 	return (
